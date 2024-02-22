@@ -185,7 +185,9 @@ export default function ShowPost({ showUserId, hey }) {
                             </div>
                             {item.img !== null && (
                               <div className="third">
-                                <img src={item.img} />
+                                <img
+                                  src={`https://social-media-q3gh.onrender.com/${item.img}`}
+                                />
                               </div>
                             )}
                             <div className="fourth">
