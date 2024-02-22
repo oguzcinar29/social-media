@@ -19,7 +19,7 @@ export default function Right() {
             }
           });
           const findDiss = dissmissArr?.find((item3) => item3 === item.id);
-          console.log(findDiss);
+
           if (
             typeof findFriend === "undefined" &&
             item.id !== user?.id &&

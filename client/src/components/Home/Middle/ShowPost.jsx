@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 export default function ShowPost({ showUserId, hey }) {
   const { user, allUsers } = useContext(SocialContext);
 
-  const [posts, setPosts] = useState([0]);
+  const [posts, setPosts] = useState([{}]);
 
   const [isDeleteClicked, setDeleteClicked] = useState(false);
   const [deleteId, setDeleteId] = useState();
@@ -96,7 +96,9 @@ export default function ShowPost({ showUserId, hey }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [posts]);
+  }, []);
+
+  console.log(posts);
 
   return (
     <>
