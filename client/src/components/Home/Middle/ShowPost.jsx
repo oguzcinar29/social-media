@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 export default function ShowPost({ showUserId, hey }) {
   const { user, allUsers } = useContext(SocialContext);
 
-  const [posts, setPosts] = useState([{}]);
+  const [posts, setPosts] = useState([]);
 
   const [isDeleteClicked, setDeleteClicked] = useState(false);
   const [deleteId, setDeleteId] = useState();
@@ -91,14 +91,13 @@ export default function ShowPost({ showUserId, hey }) {
     axios
       .get("/api/posts/get-all-post")
       .then((res) => {
+        console.log(res.data);
         setPosts(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
-  console.log(posts);
 
   return (
     <>
@@ -115,340 +114,347 @@ export default function ShowPost({ showUserId, hey }) {
         </Box>
       ) : (
         <div>
-          {posts?.map((item, i) => {
-            const findUser = allUsers.find(
-              (item2) => parseInt(item2.id) === parseInt(item.user_id)
-            );
-            const findLike = item.likes?.find((item) => {
-              if (item.userId === user.id) {
-                return item.boolean;
-              }
-            });
+          {Array.isArray(posts) &&
+            posts?.map((item, i) => {
+              const findUser = allUsers.find(
+                (item2) => parseInt(item2.id) === parseInt(item.user_id)
+              );
+              const findLike = item.likes?.find((item) => {
+                if (item.userId === user.id) {
+                  return item.boolean;
+                }
+              });
 
-            const findFriend = user?.friends?.find(
-              (item2) => item2 === findUser?.id
-            );
-            return (
-              <div key={i}>
-                {hey !== "123"
-                  ? (findFriend === findUser?.id ||
-                      findUser?.id === user.id) && (
-                      <div className="show-post">
-                        <div className="show-post-box">
-                          <div className="first">
-                            <div className="avatar">
-                              <Link to={`/${item.user_id}`}>
-                                <Stack direction="row" spacing={2}>
-                                  <Avatar
-                                    alt="Remy Sharp"
-                                    src={findUser?.img}
-                                  />
-                                </Stack>
-                              </Link>
-                              <div className="user-name">
-                                <Link to={`/${item.user_id}`} className="link">
-                                  <b>{findUser?.name}</b>
+              const findFriend = user?.friends?.find(
+                (item2) => item2 === findUser?.id
+              );
+              return (
+                <div key={i}>
+                  {hey !== "123"
+                    ? (findFriend === findUser?.id ||
+                        findUser?.id === user.id) && (
+                        <div className="show-post">
+                          <div className="show-post-box">
+                            <div className="first">
+                              <div className="avatar">
+                                <Link to={`/${item.user_id}`}>
+                                  <Stack direction="row" spacing={2}>
+                                    <Avatar
+                                      alt="Remy Sharp"
+                                      src={findUser?.img}
+                                    />
+                                  </Stack>
                                 </Link>
-                                <span>{item.share_time}</span>
+                                <div className="user-name">
+                                  <Link
+                                    to={`/${item.user_id}`}
+                                    className="link"
+                                  >
+                                    <b>{findUser?.name}</b>
+                                  </Link>
+                                  <span>{item.share_time}</span>
+                                </div>
                               </div>
-                            </div>
-                            {item.user_id === user.id && (
-                              <form
-                                className="delete-form"
-                                onSubmit={(e) => {
-                                  e.preventDefault();
-                                  deletePost(item.id);
-                                  setDeleteClicked((prevVal) => !prevVal);
-                                }}
-                              >
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setDeleteId(item.id);
+                              {item.user_id === user.id && (
+                                <form
+                                  className="delete-form"
+                                  onSubmit={(e) => {
+                                    e.preventDefault();
+                                    deletePost(item.id);
                                     setDeleteClicked((prevVal) => !prevVal);
                                   }}
                                 >
-                                  <MoreHorizIcon />
-                                </button>
-                                {isDeleteClicked && item.id === deleteId && (
-                                  <button className="delete" type="submit">
-                                    delete
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setDeleteId(item.id);
+                                      setDeleteClicked((prevVal) => !prevVal);
+                                    }}
+                                  >
+                                    <MoreHorizIcon />
                                   </button>
-                                )}
-                              </form>
+                                  {isDeleteClicked && item.id === deleteId && (
+                                    <button className="delete" type="submit">
+                                      delete
+                                    </button>
+                                  )}
+                                </form>
+                              )}
+                            </div>
+                            <div className="second">
+                              <p>{item.post_text}</p>
+                            </div>
+                            {item.img !== null && (
+                              <div className="third">
+                                <img src={item.img} />
+                              </div>
                             )}
-                          </div>
-                          <div className="second">
-                            <p>{item.post_text}</p>
-                          </div>
-                          {item.img !== null && (
-                            <div className="third">
-                              <img src={item.img} />
-                            </div>
-                          )}
-                          <div className="fourth">
-                            <form
-                              onSubmit={(e) => {
-                                e.preventDefault();
-                                likePost(
-                                  user.id,
-                                  item.id,
-                                  item?.like_count,
-                                  item?.likes
-                                );
-                              }}
-                              className="item"
-                            >
-                              <button type="submit">
-                                {typeof findLike === "undefined" ? (
-                                  <FavoriteBorderOutlinedIcon />
-                                ) : (
-                                  <FavoriteOutlinedIcon
-                                    style={{ color: "red" }}
-                                  />
-                                )}
-                              </button>
-                              <span>
-                                {item.like_count === null
-                                  ? 0
-                                  : item?.like_count}
-                              </span>
-                            </form>
-                            <form>
-                              <button
-                                onClick={() => {
-                                  setCommentClicked((prevVal) => !prevVal);
-                                  setCommentId(item.id);
-                                }}
-                                type="button"
-                              >
-                                <ChatOutlinedIcon />
-                                <span>
-                                  Comments{" "}
-                                  <span>
-                                    {item?.data2 !== null ? (
-                                      <span>({item.data2?.length})</span>
-                                    ) : null}
-                                  </span>
-                                </span>
-                              </button>
-                            </form>
-                            <div>
-                              <ShareOutlinedIcon />
-                              <span>Share</span>
-                            </div>
-                          </div>
-                          <div className="fifth">
-                            {isCommentClicked && item.id === commentId && (
+                            <div className="fourth">
                               <form
                                 onSubmit={(e) => {
                                   e.preventDefault();
-                                  setCommentText("");
-                                  sendComment(user?.id, item.id, commentText);
-                                }}
-                                className="comment-text"
-                              >
-                                <Stack direction="row" spacing={2}>
-                                  <Avatar alt="Remy Sharp" src={user?.img} />
-                                </Stack>
-                                <input
-                                  className="comment-text"
-                                  type="text"
-                                  name="commentText"
-                                  value={commentText}
-                                  onChange={(e) =>
-                                    setCommentText(e.target.value)
-                                  }
-                                  placeholder="write a comment"
-                                  autoFocus
-                                  required
-                                />
-
-                                <input
-                                  className="send-comment"
-                                  type="submit"
-                                  value="Send"
-                                />
-                              </form>
-                            )}
-                            {isCommentClicked && item?.id === commentId && (
-                              <div className="comments">
-                                {item.data2?.toReversed().map((item2, i) => {
-                                  return (
-                                    <Comments
-                                      postId={item.id}
-                                      key={i}
-                                      {...item2}
-                                    />
+                                  likePost(
+                                    user.id,
+                                    item.id,
+                                    item?.like_count,
+                                    item?.likes
                                   );
-                                })}
+                                }}
+                                className="item"
+                              >
+                                <button type="submit">
+                                  {typeof findLike === "undefined" ? (
+                                    <FavoriteBorderOutlinedIcon />
+                                  ) : (
+                                    <FavoriteOutlinedIcon
+                                      style={{ color: "red" }}
+                                    />
+                                  )}
+                                </button>
+                                <span>
+                                  {item.like_count === null
+                                    ? 0
+                                    : item?.like_count}
+                                </span>
+                              </form>
+                              <form>
+                                <button
+                                  onClick={() => {
+                                    setCommentClicked((prevVal) => !prevVal);
+                                    setCommentId(item.id);
+                                  }}
+                                  type="button"
+                                >
+                                  <ChatOutlinedIcon />
+                                  <span>
+                                    Comments{" "}
+                                    <span>
+                                      {item?.data2 !== null ? (
+                                        <span>({item.data2?.length})</span>
+                                      ) : null}
+                                    </span>
+                                  </span>
+                                </button>
+                              </form>
+                              <div>
+                                <ShareOutlinedIcon />
+                                <span>Share</span>
                               </div>
-                            )}
+                            </div>
+                            <div className="fifth">
+                              {isCommentClicked && item.id === commentId && (
+                                <form
+                                  onSubmit={(e) => {
+                                    e.preventDefault();
+                                    setCommentText("");
+                                    sendComment(user?.id, item.id, commentText);
+                                  }}
+                                  className="comment-text"
+                                >
+                                  <Stack direction="row" spacing={2}>
+                                    <Avatar alt="Remy Sharp" src={user?.img} />
+                                  </Stack>
+                                  <input
+                                    className="comment-text"
+                                    type="text"
+                                    name="commentText"
+                                    value={commentText}
+                                    onChange={(e) =>
+                                      setCommentText(e.target.value)
+                                    }
+                                    placeholder="write a comment"
+                                    autoFocus
+                                    required
+                                  />
+
+                                  <input
+                                    className="send-comment"
+                                    type="submit"
+                                    value="Send"
+                                  />
+                                </form>
+                              )}
+                              {isCommentClicked && item?.id === commentId && (
+                                <div className="comments">
+                                  {item.data2?.toReversed().map((item2, i) => {
+                                    return (
+                                      <Comments
+                                        postId={item.id}
+                                        key={i}
+                                        {...item2}
+                                      />
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )
-                  : (typeof showUserId !== "undefined"
-                      ? showUserId === findUser?.id
-                      : findUser?.id === user.id) && (
-                      <div key={i} className="show-post">
-                        <div className="show-post-box">
-                          <div className="first">
-                            <div className="avatar">
-                              <Link to={`/${item.user_id}`}>
-                                <Stack direction="row" spacing={2}>
-                                  <Avatar
-                                    alt="Remy Sharp"
-                                    src={findUser?.img}
-                                  />
-                                </Stack>
-                              </Link>
-                              <div className="user-name">
-                                <Link to={`/${item.user_id}`} className="link">
-                                  <b>{findUser?.name}</b>
+                      )
+                    : (typeof showUserId !== "undefined"
+                        ? showUserId === findUser?.id
+                        : findUser?.id === user.id) && (
+                        <div key={i} className="show-post">
+                          <div className="show-post-box">
+                            <div className="first">
+                              <div className="avatar">
+                                <Link to={`/${item.user_id}`}>
+                                  <Stack direction="row" spacing={2}>
+                                    <Avatar
+                                      alt="Remy Sharp"
+                                      src={findUser?.img}
+                                    />
+                                  </Stack>
                                 </Link>
-                                <span>{item.share_time}</span>
+                                <div className="user-name">
+                                  <Link
+                                    to={`/${item.user_id}`}
+                                    className="link"
+                                  >
+                                    <b>{findUser?.name}</b>
+                                  </Link>
+                                  <span>{item.share_time}</span>
+                                </div>
                               </div>
-                            </div>
-                            {item.user_id === user.id && (
-                              <form
-                                className="delete-form"
-                                onSubmit={(e) => {
-                                  e.preventDefault();
-                                  deletePost(item.id);
-                                  setDeleteClicked((prevVal) => !prevVal);
-                                }}
-                              >
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setDeleteId(item.id);
+                              {item.user_id === user.id && (
+                                <form
+                                  className="delete-form"
+                                  onSubmit={(e) => {
+                                    e.preventDefault();
+                                    deletePost(item.id);
                                     setDeleteClicked((prevVal) => !prevVal);
                                   }}
                                 >
-                                  <MoreHorizIcon />
-                                </button>
-                                {isDeleteClicked && item.id === deleteId && (
-                                  <button className="delete" type="submit">
-                                    delete
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setDeleteId(item.id);
+                                      setDeleteClicked((prevVal) => !prevVal);
+                                    }}
+                                  >
+                                    <MoreHorizIcon />
                                   </button>
-                                )}
-                              </form>
+                                  {isDeleteClicked && item.id === deleteId && (
+                                    <button className="delete" type="submit">
+                                      delete
+                                    </button>
+                                  )}
+                                </form>
+                              )}
+                            </div>
+                            <div className="second">
+                              <p>{item.post_text}</p>
+                            </div>
+                            {item.img !== null && (
+                              <div className="third">
+                                <img src={item.img} />
+                              </div>
                             )}
-                          </div>
-                          <div className="second">
-                            <p>{item.post_text}</p>
-                          </div>
-                          {item.img !== null && (
-                            <div className="third">
-                              <img src={item.img} />
-                            </div>
-                          )}
-                          <div className="fourth">
-                            <form
-                              onSubmit={(e) => {
-                                e.preventDefault();
-                                likePost(
-                                  user.id,
-                                  item.id,
-                                  item?.like_count,
-                                  item?.likes
-                                );
-                              }}
-                              className="item"
-                            >
-                              <button type="submit">
-                                {typeof findLike === "undefined" ? (
-                                  <FavoriteBorderOutlinedIcon />
-                                ) : (
-                                  <FavoriteOutlinedIcon
-                                    style={{ color: "red" }}
-                                  />
-                                )}
-                              </button>
-                              <span>
-                                {item.like_count === null
-                                  ? 0
-                                  : item?.like_count}
-                              </span>
-                            </form>
-                            <form>
-                              <button
-                                onClick={() => {
-                                  setCommentClicked((prevVal) => !prevVal);
-                                  setCommentId(item.id);
-                                }}
-                                type="button"
-                              >
-                                <ChatOutlinedIcon />
-                                <span>
-                                  Comments{" "}
-                                  <span>
-                                    {item?.data2 !== null ? (
-                                      <span>({item.data2?.length})</span>
-                                    ) : null}
-                                  </span>
-                                </span>
-                              </button>
-                            </form>
-                            <div>
-                              <ShareOutlinedIcon />
-                              <span>Share</span>
-                            </div>
-                          </div>
-                          <div className="fifth">
-                            {isCommentClicked && item.id === commentId && (
+                            <div className="fourth">
                               <form
                                 onSubmit={(e) => {
                                   e.preventDefault();
-                                  setCommentText("");
-                                  sendComment(user?.id, item.id, commentText);
-                                }}
-                                className="comment-text"
-                              >
-                                <Stack direction="row" spacing={2}>
-                                  <Avatar alt="Remy Sharp" src={user?.img} />
-                                </Stack>
-                                <input
-                                  className="comment-text"
-                                  type="text"
-                                  name="commentText"
-                                  value={commentText}
-                                  onChange={(e) =>
-                                    setCommentText(e.target.value)
-                                  }
-                                  placeholder="write a comment"
-                                  autoFocus
-                                  required
-                                />
-
-                                <input
-                                  className="send-comment"
-                                  type="submit"
-                                  value="Send"
-                                />
-                              </form>
-                            )}
-                            {isCommentClicked && item?.id === commentId && (
-                              <div className="comments">
-                                {item.data2?.toReversed().map((item2, i) => {
-                                  return (
-                                    <Comments
-                                      postId={item.id}
-                                      key={i}
-                                      {...item2}
-                                    />
+                                  likePost(
+                                    user.id,
+                                    item.id,
+                                    item?.like_count,
+                                    item?.likes
                                   );
-                                })}
+                                }}
+                                className="item"
+                              >
+                                <button type="submit">
+                                  {typeof findLike === "undefined" ? (
+                                    <FavoriteBorderOutlinedIcon />
+                                  ) : (
+                                    <FavoriteOutlinedIcon
+                                      style={{ color: "red" }}
+                                    />
+                                  )}
+                                </button>
+                                <span>
+                                  {item.like_count === null
+                                    ? 0
+                                    : item?.like_count}
+                                </span>
+                              </form>
+                              <form>
+                                <button
+                                  onClick={() => {
+                                    setCommentClicked((prevVal) => !prevVal);
+                                    setCommentId(item.id);
+                                  }}
+                                  type="button"
+                                >
+                                  <ChatOutlinedIcon />
+                                  <span>
+                                    Comments{" "}
+                                    <span>
+                                      {item?.data2 !== null ? (
+                                        <span>({item.data2?.length})</span>
+                                      ) : null}
+                                    </span>
+                                  </span>
+                                </button>
+                              </form>
+                              <div>
+                                <ShareOutlinedIcon />
+                                <span>Share</span>
                               </div>
-                            )}
+                            </div>
+                            <div className="fifth">
+                              {isCommentClicked && item.id === commentId && (
+                                <form
+                                  onSubmit={(e) => {
+                                    e.preventDefault();
+                                    setCommentText("");
+                                    sendComment(user?.id, item.id, commentText);
+                                  }}
+                                  className="comment-text"
+                                >
+                                  <Stack direction="row" spacing={2}>
+                                    <Avatar alt="Remy Sharp" src={user?.img} />
+                                  </Stack>
+                                  <input
+                                    className="comment-text"
+                                    type="text"
+                                    name="commentText"
+                                    value={commentText}
+                                    onChange={(e) =>
+                                      setCommentText(e.target.value)
+                                    }
+                                    placeholder="write a comment"
+                                    autoFocus
+                                    required
+                                  />
+
+                                  <input
+                                    className="send-comment"
+                                    type="submit"
+                                    value="Send"
+                                  />
+                                </form>
+                              )}
+                              {isCommentClicked && item?.id === commentId && (
+                                <div className="comments">
+                                  {item.data2?.toReversed().map((item2, i) => {
+                                    return (
+                                      <Comments
+                                        postId={item.id}
+                                        key={i}
+                                        {...item2}
+                                      />
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
-              </div>
-            );
-          })}
+                      )}
+                </div>
+              );
+            })}
         </div>
       )}
     </>
