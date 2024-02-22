@@ -67,7 +67,7 @@ const App = () => {
 
   return (
     <div className="app">
-      {Object.keys(user).length !== 0 ? (
+      {user && Object.keys(user).length !== 0 ? (
         <div className="app">
           <AuthenticatedApp />
         </div>
