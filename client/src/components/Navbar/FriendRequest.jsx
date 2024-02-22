@@ -21,13 +21,16 @@ export default function FriendRequest({ img, name, id }) {
         <div className="user-info">
           <b>{name}</b>
           <div className="accept-buttons">
-            <form action="/api/auth/accept-request" method="post">
+            <form
+              action="https://social-media-q3gh.onrender.com/api/auth/accept-request"
+              method="post"
+            >
               <button type="submit">Accept</button>
               <input type="hidden" name="friend" value={id} />
               <input type="hidden" name="user" value={user.id} />
             </form>
             <form
-              action="/api/auth/decline-request"
+              action="https://social-media-q3gh.onrender.com/api/auth/decline-request"
               method="post"
               type="submit"
             >

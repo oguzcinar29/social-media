@@ -12,7 +12,7 @@ export const makePost = async (req, res) => {
       "INSERT INTO posts (post_text,img,user_id,share_time) VALUES ($1,$2,$3,$4)",
       [postText, url, id, req.body.date]
     );
-    res.redirect("/");
+    res.redirect("https://social-media-eta-amber.vercel.app");
   } catch (err) {
     console.log(err);
     res.json("invalid value sorry");
@@ -54,7 +54,7 @@ export const addComment = async (req, res) => {
       postId,
     ]);
 
-    res.redirect("/");
+    res.redirect("https://social-media-eta-amber.vercel.app");
   } catch (err) {
     console.log(err);
     // Handle the error appropriately

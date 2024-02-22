@@ -8,11 +8,11 @@ function DataContext({ children }) {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    fetch("/api/auth/get-current-user")
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-current-user")
       .then((response) => response.json())
       .then((data) => setUser(data));
 
-    fetch("/api/auth/get-all-users")
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-all-users")
       .then((response) => response.json())
       .then((data) => {
         setAllUsers(data);

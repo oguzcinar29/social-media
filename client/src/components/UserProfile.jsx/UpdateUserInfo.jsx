@@ -89,7 +89,10 @@ export default function UpdateUserInfo({
           </Button>
         )}
         {user.id !== id && (
-          <form action="/api/auth/friend-request" method="post">
+          <form
+            action="https://social-media-q3gh.onrender.com/api/auth/friend-request"
+            method="post"
+          >
             {typeof findRequest === "undefined" &&
             typeof checkFriend === "undefined" ? (
               <button type="submit" className="follow-btn">
@@ -98,7 +101,10 @@ export default function UpdateUserInfo({
             ) : (
               <div>
                 {typeof checkFriend === "undefined" ? (
-                  <form action="/api/auth/friend-request-delete" method="post">
+                  <form
+                    action="https://social-media-q3gh.onrender.com/api/auth/friend-request-delete"
+                    method="post"
+                  >
                     <button type="submit" className="friend-request-span">
                       Friend Request Waiting
                     </button>
@@ -106,7 +112,10 @@ export default function UpdateUserInfo({
                     <input type="hidden" name="friendId" value={id} />
                   </form>
                 ) : (
-                  <form action="/api/auth/remove-friend" method="post">
+                  <form
+                    action="https://social-media-q3gh.onrender.com/api/auth/remove-friend"
+                    method="post"
+                  >
                     <button type="submit" className="friend-request-span">
                       Following
                     </button>
@@ -128,7 +137,7 @@ export default function UpdateUserInfo({
         >
           <Box sx={style}>
             <form
-              action="/api/auth/get-change-user-info"
+              action="https://social-media-q3gh.onrender.com/api/auth/get-change-user-info"
               method="post"
               encType="multipart/form-data"
             >

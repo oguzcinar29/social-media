@@ -17,7 +17,7 @@ export default function Login() {
   const [alert, setAlert] = useState("");
 
   useEffect(() => {
-    fetch("/api/auth/get-alert-value")
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-alert-value")
       .then((response) => response.json())
       .then((data) => setAlert(data));
   }, []);
@@ -42,7 +42,10 @@ export default function Login() {
             <Link to="/register">Register</Link>
           </div>
         </div>
-        <form action="/api/auth/login" method="post">
+        <form
+          action="https://social-media-q3gh.onrender.com/api/auth/login"
+          method="post"
+        >
           <h1>Login</h1>
           <input
             type="text"

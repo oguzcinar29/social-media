@@ -17,18 +17,18 @@ export const login = async (req, res) => {
     if (typeof findUser === "undefined") {
       // there is no email like that
       loginAlert = "There is no email like that";
-      res.redirect("/login");
+      res.redirect("https://social-media-eta-amber.vercel.app/login");
     } else {
       bcrypt.compare(password, findUser.password, function (err, result) {
         if (result) {
           // it can log in everything is correct
           loginAlert = "";
           currentUser = findUser;
-          res.redirect("/");
+          res.redirect("https://social-media-eta-amber.vercel.app");
         } else {
           // wrong password typed
           loginAlert = "Wrong password. Try Again";
-          res.redirect("/login");
+          res.redirect("https://social-media-eta-amber.vercel.app/login");
         }
       });
     }
@@ -53,15 +53,15 @@ export const register = async (req, res) => {
       });
       // everything okay
       registerAlert = "";
-      res.redirect("/login");
+      res.redirect("https://social-media-eta-amber.vercel.app/login");
     } else {
       // there is email that user typed
       registerAlert = "There is a email like that.You can loggin";
-      res.redirect("/register");
+      res.redirect("https://social-media-eta-amber.vercel.app/register");
     }
   } catch (err) {
     console.log(err);
-    res.redirect("/register");
+    res.redirect("https://social-media-eta-amber.vercel.app/register");
   }
 };
 
@@ -94,7 +94,7 @@ export const acceptRequest = async (req, res) => {
     const data = result.rows[0];
 
     currentUser = data;
-    res.redirect("/");
+    res.redirect("https://social-media-eta-amber.vercel.app");
   } catch (err) {
     console.log(err);
   }
@@ -114,7 +114,7 @@ export const declineRequest = async (req, res) => {
     const data = result.rows[0];
 
     currentUser = data;
-    res.redirect("/");
+    res.redirect("https://social-media-eta-amber.vercel.app");
   } catch (err) {
     console.log(err);
   }
@@ -140,7 +140,7 @@ export const removeFriend = async (req, res) => {
     const data = result.rows[0];
 
     currentUser = data;
-    res.redirect("/");
+    res.redirect("https://social-media-eta-amber.vercel.app");
   } catch (err) {
     console.log(err);
   }
@@ -178,7 +178,7 @@ export const getUserChangeInfo = async (req, res) => {
       const data = result.rows[0];
 
       currentUser = data;
-      res.redirect(`/${id}`);
+      res.redirect(`https://social-media-eta-amber.vercel.app/${id}`);
     } catch (err) {
       console.log(err);
     }
@@ -202,7 +202,7 @@ export const friendRequest = async (req, res) => {
     const data = result.rows[0];
 
     currentUser = data;
-    res.redirect(`/${friendId}`);
+    res.redirect(`https://social-media-eta-amber.vercel.app/${friendId}`);
   } catch (err) {
     console.log(err);
   }
@@ -222,7 +222,7 @@ export const friendRequestDelete = async (req, res) => {
     const data = result.rows[0];
 
     currentUser = data;
-    res.redirect(`/${friendId}`);
+    res.redirect(`https://social-media-eta-amber.vercel.app/${friendId}`);
   } catch (err) {
     console.log(err);
   }
@@ -240,7 +240,7 @@ export const getAllUsers = async (req, res) => {
 
 export const logout = (req, res) => {
   currentUser = [];
-  res.redirect("/login");
+  res.redirect("https://social-media-eta-amber.vercel.app/login");
 };
 
 export const getCurrentUser = (req, res) => {

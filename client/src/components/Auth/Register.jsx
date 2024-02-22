@@ -21,7 +21,7 @@ export default function Register() {
   const [alert, setAlert] = useState("");
 
   useEffect(() => {
-    fetch("/api/auth/get-alert-value2")
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-alert-value2")
       .then((response) => response.json())
       .then((data) => setAlert(data));
   }, []);
@@ -29,7 +29,10 @@ export default function Register() {
   return (
     <div className="auth">
       <div className="auth-box">
-        <form action="/api/auth/register" method="post">
+        <form
+          action="https://social-media-q3gh.onrender.com/api/auth/register"
+          method="post"
+        >
           <h1>Register</h1>
           <input
             type="text"

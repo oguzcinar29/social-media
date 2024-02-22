@@ -17,7 +17,10 @@ export default function Suggestions({ name, img, id }) {
         <b>{name}</b>
       </div>
       <div className="suggestion-btns">
-        <form action="/api/auth/friend-request" method="post">
+        <form
+          action="https://social-media-q3gh.onrender.com/api/auth/friend-request"
+          method="post"
+        >
           <button className="last-btns" type="submit">
             follow
           </button>

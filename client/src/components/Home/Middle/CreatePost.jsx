@@ -20,7 +20,7 @@ export default function CreatePost() {
     <div className="create-post">
       <form
         encType="multipart/form-data"
-        action="/api/posts/make-post"
+        action="https://social-media-q3gh.onrender.com/api/posts/make-post"
         method="post"
       >
         <input type="hidden" name="id" value={user.id} />

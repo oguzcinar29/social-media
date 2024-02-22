@@ -211,7 +211,10 @@ export default function Navbar() {
             <div className="icon">
               <NotificationsOutlinedIcon />
             </div>
-            <form action="/api/auth/logout" method="post">
+            <form
+              action="https://social-media-q3gh.onrender.com/api/auth/logout"
+              method="post"
+            >
               <input className="logout-nav" type="submit" value="Logout" />
             </form>
             <div className="avatar">

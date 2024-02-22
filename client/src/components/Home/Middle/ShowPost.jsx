@@ -39,7 +39,7 @@ export default function ShowPost({ showUserId, hey }) {
   const [isItTrue, setTrue] = useState(false);
 
   const sendComment = (user_id, post_id, text) => {
-    fetch("/api/posts/get-comment", {
+    fetch("https://social-media-q3gh.onrender.com/api/posts/get-comment", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -58,7 +58,7 @@ export default function ShowPost({ showUserId, hey }) {
   };
 
   const deletePost = (id) => {
-    fetch("/api/posts/delete-post", {
+    fetch("https://social-media-q3gh.onrender.com/api/posts/delete-post", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -68,7 +68,7 @@ export default function ShowPost({ showUserId, hey }) {
   };
 
   const likePost = (user_id, post_id, count, likes) => {
-    fetch("/api/posts/get-like", {
+    fetch("https://social-media-q3gh.onrender.com/api/posts/get-like", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -89,15 +89,14 @@ export default function ShowPost({ showUserId, hey }) {
   const WAIT_TIME = 1000;
   useEffect(() => {
     axios
-      .get("/api/posts/get-all-post")
+      .get("https://social-media-q3gh.onrender.com/api/posts/get-all-post")
       .then((res) => {
-        console.log(res.data);
         setPosts(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [posts]);
 
   return (
     <>

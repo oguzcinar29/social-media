@@ -12,7 +12,7 @@ export default function Comments({ postId, userId, comment, date }) {
 
   const deleteComment = () => {
     console.log(postId);
-    fetch("/api/posts/delete-comment", {
+    fetch("https://social-media-q3gh.onrender.com/api/posts/delete-comment", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -32,16 +32,19 @@ export default function Comments({ postId, userId, comment, date }) {
   const editText = () => {
     console.log("hey");
     setChangeText("");
-    fetch("/api/posts/edit-comment-text", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        userId: userId,
-        postId: postId,
-        oldComment: comment,
-        newComment: changeText,
-      }),
-    })
+    fetch(
+      "https://social-media-q3gh.onrender.com/api/posts/edit-comment-text",
+      {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          userId: userId,
+          postId: postId,
+          oldComment: comment,
+          newComment: changeText,
+        }),
+      }
+    )
       .then((response) => response.json())
       .then((result) => console.log(result));
 
