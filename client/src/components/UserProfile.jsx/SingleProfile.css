@@ -1,0 +1,182 @@
+.user-profile {
+  flex: 2.8;
+  background-color: gainsboro;
+  position: sticky;
+  overflow-y: scroll;
+  height: 90.4vh;
+}
+.user-profile .box .pictures {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.user-profile .box .pictures .big-img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.user-profile .box .pictures .bottom-center {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.user-profile .box .pictures .bottom-center img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+.user-profile .box .user-profile-info {
+  display: flex;
+  padding-top: 70px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  width: 90%;
+  border-radius: 15px;
+  padding-bottom: 70px;
+  margin: auto;
+  margin-top: 15px;
+}
+.user-profile .box .user-profile-info .message-box {
+  display: flex;
+  gap: 5px;
+  padding-right: 30px;
+}
+.user-profile .box .user-profile-info .social-links {
+  display: flex;
+  gap: 10px;
+}
+.user-profile .box .user-profile-info .user-info-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-right: 80px;
+}
+.user-profile .box .user-profile-info .user-info-text .location {
+  display: flex;
+  gap: 50px;
+}
+.user-profile .box .user-profile-info .user-info-text .location div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.update-user {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.update-user .close {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.update-user .close button {
+  background-color: red;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  background: transparent;
+  color: red;
+}
+.update-user h1 {
+  opacity: 0.6;
+}
+.update-user .update-imgs {
+  display: flex;
+  gap: 40px;
+}
+.update-user .update-imgs div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.update-user .update-imgs div p {
+  opacity: 0.5;
+}
+.update-user .update-imgs div .label {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.update-user .update-imgs div .label img {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+.update-user .update-imgs div .label div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.update-user .get-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+  padding-bottom: 10px;
+  width: 50%;
+}
+.update-user .get-info label {
+  color: rgb(78, 78, 208);
+}
+.update-user .get-info input {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  height: 30px;
+  border-bottom: 1px solid gray;
+  font-size: 17px;
+}
+.update-user .get-info input:focus {
+  outline: none;
+}
+.update-user .update-btn {
+  background-color: rgb(78, 78, 208);
+  padding: 10px 0;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.follow-btn {
+  background-color: rgb(78, 78, 208);
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.friend-request-span {
+  background-color: rgb(78, 78, 208);
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .user-profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0 !important;
+    margin: 0;
+    gap: 15px;
+  }
+  .user-profile-info .user-info-text {
+    padding-right: 0 !important;
+  }
+  .user-profile-info .message-box {
+    padding-right: 0 !important;
+  }
+}/*# sourceMappingURL=SingleProfile.css.map */

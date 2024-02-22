@@ -1,0 +1,31 @@
+.home ::-webkit-scrollbar {
+  display: none;
+}
+.home .home-box .left {
+  position: sticky;
+  overflow-y: scroll;
+  height: 90.4vh;
+  padding-top: 10px;
+}
+.home .home-box .left .box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  margin: auto;
+  padding-bottom: 10px;
+}
+.home .home-box .left .box p {
+  font-weight: 700;
+  font-size: 12px;
+}
+.home .home-box .left .box .item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+.home .home-box .left .box .item img {
+  width: 30px;
+  height: 30px;
+}/*# sourceMappingURL=Left.css.map */

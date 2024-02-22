@@ -1,0 +1,67 @@
+.home .home-box .right .right-box {
+  width: 90%;
+  margin: auto;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: sticky;
+  overflow-y: scroll;
+  height: 89vh;
+}
+.home .home-box .right .right-box .box {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  gap: 10px;
+  padding: 25px 15px;
+}
+.home .home-box .right .right-box .box .latest {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home .home-box .right .right-box .box .latest .latest-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home .home-box .right .right-box .box .latest .latest-item b {
+  font-weight: 600;
+}
+.home .home-box .right .right-box .box .suggestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home .home-box .right .right-box .box .suggestion .name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home .home-box .right .right-box .box .suggestion .suggestion-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home .home-box .right .right-box .box .suggestion .suggestion-btns .last-btns {
+  background-color: rgb(78, 78, 208);
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+.home .home-box .right .right-box .box .suggestion .suggestion-btns .red {
+  background-color: rgba(255, 0, 0, 0.685);
+  padding: 4px;
+}
+.home .home-box .right .right-box .online-friends {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home .home-box .right .right-box .online-friends .online-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}/*# sourceMappingURL=Right.css.map */

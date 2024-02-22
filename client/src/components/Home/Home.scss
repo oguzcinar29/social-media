@@ -1,0 +1,29 @@
+.home {
+  .home-box {
+    display: flex;
+    .left {
+      flex: 1;
+      background-color: #ffffff;
+    }
+    .middle {
+      flex: 2.5;
+      background-color: rgb(237, 230, 230);
+    }
+    .right {
+      flex: 1.5;
+      background-color: rgb(237, 230, 230);
+    }
+    .hey {
+      background-color: rgb(237, 230, 230);
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .left {
+    display: none;
+  }
+  .right {
+    display: none;
+  }
+}

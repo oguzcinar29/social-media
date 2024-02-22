@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Electrolize&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Single+Day&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.app .nav {
+  border-bottom: 1px solid gainsboro;
+}
+.app .nav .box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+}
+.app .nav .box .icon {
+  cursor: pointer;
+}
+.app .nav .box .left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.app .nav .box .left h5 {
+  font-size: 30px;
+  color: rgb(78, 78, 208);
+}
+.app .nav .box .left .search input {
+  width: 200%;
+  padding: 7px;
+  border: 1px solid gainsboro;
+  padding-right: 25px;
+  padding-left: 23px;
+  background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat left;
+  background-size: 20px;
+}
+.app .nav .box .right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+@media (max-width: 1100px) {
+  .app .nav .box .right .rigth {
+    display: none;
+  }
+}
+.app .nav .box .right .avatar {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.friend-request-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.friend-request-nav .box {
+  display: flex;
+  gap: 10px;
+}
+.friend-request-nav .box .user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.friend-request-nav .box .user-info .accept-buttons {
+  display: flex;
+  gap: 10px;
+}
+.friend-request-nav .box .user-info .accept-buttons form button {
+  background-color: rgb(78, 78, 208);
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-nav {
+  background-color: rgb(78, 78, 208);
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.search-user {
+  background-color: rgb(78, 78, 208);
+  border-left: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=Navbar.css.map */

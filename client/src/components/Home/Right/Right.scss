@@ -1,0 +1,75 @@
+.home {
+  .home-box {
+    .right {
+      .right-box {
+        width: 90%;
+        margin: auto;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        position: sticky;
+        overflow-y: scroll;
+        height: 89vh;
+        .box {
+          display: flex;
+          flex-direction: column;
+          background-color: #ffffff;
+          gap: 10px;
+          padding: 25px 15px;
+
+          .latest {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .latest-item {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              b {
+                font-weight: 600;
+              }
+            }
+          }
+          .suggestion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .name {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            }
+            .suggestion-btns {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              .last-btns {
+                background-color: rgb(78, 78, 208);
+                color: white;
+                border: none;
+                padding: 5px;
+                cursor: pointer;
+              }
+              .red {
+                background-color: rgba(255, 0, 0, 0.685);
+
+                padding: 4px;
+              }
+            }
+          }
+        }
+        .online-friends {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .online-box {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
