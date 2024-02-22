@@ -112,7 +112,7 @@ export default function ShowPost({ showUserId, hey }) {
           <CircularProgress />
         </Box>
       ) : (
-        posts.map((item, i) => {
+        posts?.map((item, i) => {
           const findUser = allUsers.find(
             (item2) => parseInt(item2.id) === parseInt(item.user_id)
           );
