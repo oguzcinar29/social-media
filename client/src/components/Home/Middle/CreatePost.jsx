@@ -31,7 +31,7 @@ export default function CreatePost() {
               <Avatar alt="Remy Sharp" src={user.img} />
             </Stack>
           </Link>
-          <textarea
+          <input
             type="text"
             name="postText"
             value={postText}
