@@ -140,7 +140,7 @@ export default function ShowPost({ showUserId, hey }) {
                                   <Stack direction="row" spacing={2}>
                                     <Avatar
                                       alt="Remy Sharp"
-                                      src={findUser?.img}
+                                      src={`https://social-media-q3gh.onrender.com/${findUser?.img}`}
                                     />
                                   </Stack>
                                 </Link>
