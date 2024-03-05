@@ -31,6 +31,9 @@ export default function SingleProfile({
 
   const { user } = useContext(SocialContext);
 
+  console.log(img);
+  console.log(big_img);
+
   return (
     <div className="box">
       <div className="pictures">

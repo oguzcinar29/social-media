@@ -183,13 +183,11 @@ export default function ShowPost({ showUserId, hey }) {
                             <div className="second">
                               <p>{item.post_text}</p>
                             </div>
-                            {item.img !== null && (
-                              <div className="third">
-                                <img
-                                  src={`https://social-media-q3gh.onrender.com/${item.img}`}
-                                />
-                              </div>
-                            )}
+                            <div className="third">
+                              <img
+                                src={`https://social-media-q3gh.onrender.com/${item.img}`}
+                              />
+                            </div>
                             <div className="fourth">
                               <form
                                 onSubmit={(e) => {
