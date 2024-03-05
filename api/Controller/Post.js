@@ -21,7 +21,7 @@ export const makePost = async (req, res) => {
 
 export const getAllPost = async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM posts ORDER BY id ASC");
+    const result = await db.query("SELECT * FROM posts ORDER BY id DESC");
     const data = result.rows;
     res.json(data);
   } catch (err) {

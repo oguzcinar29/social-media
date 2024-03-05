@@ -236,9 +236,6 @@ export default function Navbar() {
             options={countries2}
             autoHighlight
             getOptionLabel={(option) => option.label}
-            InputProps={{
-              style: { height: 50 },
-            }}
             renderOption={(props, option) => (
               <Box
                 component="li"
