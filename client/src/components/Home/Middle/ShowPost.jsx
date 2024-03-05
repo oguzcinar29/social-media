@@ -123,7 +123,7 @@ export default function ShowPost({ showUserId, hey }) {
                   return item.boolean;
                 }
               });
-
+              console.log(item.img);
               const findFriend = user?.friends?.find(
                 (item2) => item2 === findUser?.id
               );
