@@ -127,6 +127,7 @@ export default function ShowPost({ showUserId, hey }) {
               const findFriend = user?.friends?.find(
                 (item2) => item2 === findUser?.id
               );
+              console.log(findUser?.img);
               return (
                 <div key={i}>
                   {hey !== "123"
@@ -140,7 +141,7 @@ export default function ShowPost({ showUserId, hey }) {
                                   <Stack direction="row" spacing={2}>
                                     <Avatar
                                       alt="Remy Sharp"
-                                      src={findUser?.img}
+                                      src={`https://social-media-q3gh.onrender.com/${findUser?.img}`}
                                     />
                                   </Stack>
                                 </Link>
@@ -303,7 +304,7 @@ export default function ShowPost({ showUserId, hey }) {
                                   <Stack direction="row" spacing={2}>
                                     <Avatar
                                       alt="Remy Sharp"
-                                      src={findUser?.img}
+                                      src={`https://social-media-q3gh.onrender.com/${findUser?.img}`}
                                     />
                                   </Stack>
                                 </Link>
