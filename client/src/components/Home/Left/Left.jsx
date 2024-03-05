@@ -20,7 +20,7 @@ export default function Left() {
             <Avatar
               style={{ width: "30px", height: "30px" }}
               alt="Remy Sharp"
-              src={user.img}
+              src={`https://social-media-q3gh.onrender.com/${user.img}`}
             />
           </Stack>
           <span>{user.name}</span>

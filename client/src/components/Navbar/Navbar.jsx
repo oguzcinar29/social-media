@@ -231,7 +231,10 @@ export default function Navbar() {
             <div className="avatar">
               <Link to={`/${user.id}`}>
                 <Stack direction="row" spacing={2}>
-                  <Avatar alt="Remy Sharp" src={user.img} />
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={`https://social-media-q3gh.onrender.com/${user.img}`}
+                  />
                 </Stack>
               </Link>
               <b>{user.name}</b>
