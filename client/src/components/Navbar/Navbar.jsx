@@ -81,9 +81,19 @@ export default function Navbar() {
           <div className="icon">
             <DarkModeOutlinedIcon />
           </div>
-          <div className="icon">
-            <GridViewOutlinedIcon />
-          </div>
+          {width > 750 && (
+            <div className="icon">
+              <GridViewOutlinedIcon />
+            </div>
+          )}
+          {width < 750 && (
+            <form
+              action="https://social-media-q3gh.onrender.com/api/auth/logout"
+              method="post"
+            >
+              <input className="logout-nav" type="submit" value="Logout" />
+            </form>
+          )}
 
           {width > 750 && (
             <div className="search2">
@@ -154,12 +164,6 @@ export default function Navbar() {
             >
               <SearchIcon />
             </button>
-            <form
-              action="https://social-media-q3gh.onrender.com/api/auth/logout"
-              method="post"
-            >
-              <input className="logout-nav" type="submit" value="Logout" />
-            </form>
           </div>
         )}
         {width > 1100 && (
