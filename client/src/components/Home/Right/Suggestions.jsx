@@ -11,7 +11,10 @@ export default function Suggestions({ name, img, id }) {
       <div className="name">
         <Link to={`/${id}`}>
           <Stack direction="row" spacing={2}>
-            <Avatar alt="Remy Sharp" src={img} />
+            <Avatar
+              alt="Remy Sharp"
+              src={`https://social-media-q3gh.onrender.com/${img}`}
+            />
           </Stack>
         </Link>
         <b>{name}</b>

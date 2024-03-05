@@ -8,15 +8,17 @@ function DataContext({ children }) {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://social-media-q3gh.onrender.com/api/auth/get-current-user")
-      .then((response) => response.json())
-      .then((data) => setUser(data));
+    const id = setInterval(() => {
+      fetch("https://social-media-q3gh.onrender.com/api/auth/get-current-user")
+        .then((response) => response.json())
+        .then((data) => setUser(data));
 
-    fetch("https://social-media-q3gh.onrender.com/api/auth/get-all-users")
-      .then((response) => response.json())
-      .then((data) => {
-        setAllUsers(data);
-      });
+      fetch("https://social-media-q3gh.onrender.com/api/auth/get-all-users")
+        .then((response) => response.json())
+        .then((data) => {
+          setAllUsers(data);
+        });
+    }, 1000);
   }, []);
 
   useEffect(() => {
