@@ -6,8 +6,16 @@ import { SocialContext } from "../../Context/DataContext";
 import { Link } from "react-router-dom";
 
 export default function Left() {
-  const { user } = useContext(SocialContext);
+  const [user, setUser] = useState(localStorage.getItem("user") || null);
 
+  useEffect(() => {
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-current-user")
+      .then((response) => response.json())
+      .then((data) => setUser(data));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
   return (
     <div className="box">
       <div className="avatar item">

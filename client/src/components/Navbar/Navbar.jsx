@@ -35,8 +35,18 @@ export default function Navbar() {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
 
-  const { user, allUsers } = useContext(SocialContext);
-
+  const [user, setUser] = useState(localStorage.getItem("user") || null);
+  const [allUsers, setAllUsers] = useState([]);
+  useEffect(() => {
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-current-user")
+      .then((response) => response.json())
+      .then((data) => setUser(data));
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-all-users")
+      .then((response) => response.json())
+      .then((data) => {
+        setAllUsers(data);
+      });
+  }, []);
   const countries = [
     { code: "AD", label: "Andorra", phone: "376" },
     {

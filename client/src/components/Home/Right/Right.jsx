@@ -5,7 +5,17 @@ import Suggestions from "./Suggestions";
 import Latest from "./Latest";
 import OnlineFriends from "./OnlineFriends";
 export default function Right() {
-  const { user, allUsers, dissmissArr } = useContext(SocialContext);
+  const { dissmissArr } = useContext(SocialContext);
+  const [allUsers, setAllUsers] = useState([]);
+  const [user, setUser] = useState(localStorage.getItem("user") || null);
+
+  useEffect(() => {
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-all-users")
+      .then((response) => response.json())
+      .then((data) => {
+        setAllUsers(data);
+      });
+  }, []);
 
   return (
     <div className="right-box">

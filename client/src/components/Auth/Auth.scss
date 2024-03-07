@@ -83,3 +83,9 @@
     }
   }
 }
+@media (max-width: 800px) {
+  .auth-box {
+    display: flex;
+    flex-direction: column;
+  }
+}
