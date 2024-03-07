@@ -11,7 +11,10 @@ export default function Left() {
   useEffect(() => {
     fetch("https://social-media-q3gh.onrender.com/api/auth/get-current-user")
       .then((response) => response.json())
-      .then((data) => setUser(data));
+      .then((data) => {
+        console.log("left side here");
+        setUser(data);
+      });
   }, []);
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));

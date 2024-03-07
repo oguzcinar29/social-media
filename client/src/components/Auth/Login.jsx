@@ -67,6 +67,10 @@ export default function Login() {
           <button className="auth-btn" type="submit">
             Login
           </button>
+          <div className="hide-auth">
+            <p>Do'nt you have an account?</p>
+            <Link to="/register">Register</Link>
+          </div>
         </form>
       </div>
     </div>

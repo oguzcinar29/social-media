@@ -71,6 +71,10 @@ export default function Register() {
           <button className="auth-btn" type="submit">
             Register
           </button>
+          <div className="hide-auth">
+            <p>Do you have an account?</p>
+            <Link to="/login">Login</Link>
+          </div>
         </form>
         <div className="auth-image">
           <img src="https://plus.unsplash.com/premium_photo-1707988178080-1410d2423487?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8" />

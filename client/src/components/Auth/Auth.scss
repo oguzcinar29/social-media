@@ -83,9 +83,20 @@
     }
   }
 }
+
+.hide-auth {
+  display: none;
+}
 @media (max-width: 800px) {
   .auth-box {
     display: flex;
     flex-direction: column;
+  }
+  .auth-image {
+    display: none;
+  }
+  .hide-auth {
+    display: flex;
+    gap: 3px;
   }
 }
