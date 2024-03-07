@@ -140,6 +140,7 @@ export default function UpdateUserInfo({
               action="https://social-media-q3gh.onrender.com/api/auth/get-change-user-info"
               method="post"
               encType="multipart/form-data"
+              className="update-user"
             >
               <input type="hidden" name="id" value={id} />
               <div className="update-user" id="hey">
@@ -245,7 +246,11 @@ export default function UpdateUserInfo({
                   />
                 </div>
 
-                <button className="update-btn" type="submit">
+                <button
+                  onClick={() => window.location.reload()}
+                  className="update-btn"
+                  type="submit"
+                >
                   Update
                 </button>
               </div>
