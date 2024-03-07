@@ -22,6 +22,7 @@ function DataContext({ children }) {
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
+  console.log(user);
 
   const [dissmissArr, setDissMissArr] = useState();
 
