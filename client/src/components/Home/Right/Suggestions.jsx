@@ -1,11 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { SocialContext } from "../../Context/DataContext";
 import { Link } from "react-router-dom";
 
 export default function Suggestions({ name, img, id }) {
-  const { user, tempUserArr, setDissMissArr } = useContext(SocialContext);
+  const { tempUserArr, setDissMissArr } = useContext(SocialContext);
+  const [user, setUser] = useState(localStorage.getItem("user") || null);
+  const [posts, setPosts] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-current-user")
+      .then((response) => response.json())
+      .then((data) => setUser(data));
+
+    fetch("https://social-media-q3gh.onrender.com/api/auth/get-all-users")
+      .then((response) => response.json())
+      .then((data) => {
+        setAllUsers(data);
+      });
+  }, []);
   return (
     <div className="suggestion">
       <div className="name">

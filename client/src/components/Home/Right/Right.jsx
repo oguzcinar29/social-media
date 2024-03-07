@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Right.scss";
 import { SocialContext } from "../../Context/DataContext";
 import Suggestions from "./Suggestions";
