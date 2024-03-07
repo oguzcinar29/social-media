@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./Left.scss";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
@@ -6,21 +6,9 @@ import { SocialContext } from "../../Context/DataContext";
 import { Link } from "react-router-dom";
 
 export default function Left() {
-  const [user, setUser] = useState(localStorage.getItem("user") || null);
+  const { user } = useContext(SocialContext);
+  console.log(user?.img);
 
-  useEffect(() => {
-    fetch("https://social-media-q3gh.onrender.com/api/auth/get-current-user")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("left side here");
-        console.log(data);
-        setUser(data);
-      });
-  }, []);
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(user));
-  }, [user]);
-  console.log(user.img);
   return (
     <div className="box">
       <div className="avatar item">
