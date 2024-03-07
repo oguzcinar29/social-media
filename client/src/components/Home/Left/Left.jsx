@@ -13,12 +13,14 @@ export default function Left() {
       .then((response) => response.json())
       .then((data) => {
         console.log("left side here");
+        console.log(data);
         setUser(data);
       });
   }, []);
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
+  console.log(user.img);
   return (
     <div className="box">
       <div className="avatar item">
