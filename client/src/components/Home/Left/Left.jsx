@@ -20,8 +20,12 @@ export default function Left() {
           <Stack direction="row" spacing={2}>
             <Avatar
               style={{ width: "30px", height: "30px" }}
-              alt="Remy Sharp"
-              src={`https://social-media-q3gh.onrender.com/${user.img}`}
+              alt={img.username}
+              src={
+                typeof user.img !== "undefined"
+                  ? `https://social-media-q3gh.onrender.com/${user.img}`
+                  : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtvj0pJnhgtJsOOFTcg6PDGuuGUqR26dFg5AMMkGmqQ&s"
+              }
             />
           </Stack>
           <span>{user.name}</span>

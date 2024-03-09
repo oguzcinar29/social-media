@@ -254,7 +254,15 @@ export default function ShowPost({ showUserId, hey }) {
                                   className="comment-text"
                                 >
                                   <Stack direction="row" spacing={2}>
-                                    <Avatar alt="Remy Sharp" src={user?.img} />
+                                    <Avatar
+                                      style={{ width: "30px", height: "30px" }}
+                                      alt={img.username}
+                                      src={
+                                        typeof user.img !== "undefined"
+                                          ? `https://social-media-q3gh.onrender.com/${user.img}`
+                                          : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtvj0pJnhgtJsOOFTcg6PDGuuGUqR26dFg5AMMkGmqQ&s"
+                                      }
+                                    />
                                   </Stack>
                                   <input
                                     className="comment-text"

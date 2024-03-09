@@ -129,9 +129,15 @@ export default function Navbar() {
                         setSearchUser(option.label);
                       }}
                     >
-                      <Stack direction="row" spacing={2}>
-                        <Avatar alt="Remy Sharp" src={option.code} />
-                      </Stack>
+                      <Avatar
+                        style={{ width: "30px", height: "30px" }}
+                        alt=""
+                        src={
+                          typeof user.img !== "undefined"
+                            ? `https://social-media-q3gh.onrender.com/${option.code}`
+                            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtvj0pJnhgtJsOOFTcg6PDGuuGUqR26dFg5AMMkGmqQ&s"
+                        }
+                      />
                       {option.label}
                     </div>
                   </Box>
@@ -242,8 +248,13 @@ export default function Navbar() {
               <Link to={`/${user.id}`}>
                 <Stack direction="row" spacing={2}>
                   <Avatar
-                    alt="Remy Sharp"
-                    src={`https://social-media-q3gh.onrender.com/${user.img}`}
+                    style={{ width: "30px", height: "30px" }}
+                    alt={img.username}
+                    src={
+                      typeof user?.img !== "undefined"
+                        ? `https://social-media-q3gh.onrender.com/${user?.img}`
+                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtvj0pJnhgtJsOOFTcg6PDGuuGUqR26dFg5AMMkGmqQ&s"
+                    }
                   />
                 </Stack>
               </Link>
