@@ -249,7 +249,7 @@ export default function Navbar() {
                 <Stack direction="row" spacing={2}>
                   <Avatar
                     style={{ width: "30px", height: "30px" }}
-                    alt={img.username}
+                    alt={user.username}
                     src={
                       typeof user?.img !== "undefined"
                         ? `https://social-media-q3gh.onrender.com/${user?.img}`
